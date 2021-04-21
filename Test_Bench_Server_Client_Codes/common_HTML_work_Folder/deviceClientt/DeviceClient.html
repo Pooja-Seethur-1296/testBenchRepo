@@ -1,0 +1,135 @@
+<!--*********************************************************************************************************************
+*
+*     Name:                    Web Socket Client 
+*     Version:                 1.0
+*     Author:                  Pooja Seethur
+*     Description:             This is the javascript file having source code for a simple WebSocket Client. 
+*							   This establishes a websocket communication between client and Server. 
+*							   The Web Socket client communicates with the Server and handles the client accordingly.
+*
+**********************************************************************************************************************-->
+<html>
+    <head>
+            <script type="text/javascript" src="DevClient.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<style>
+				body {
+					background-image: url('deviceImagee.jpg');
+					
+				}
+				img {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+				}
+                h1 {text-align: center;}
+				
+				table, th, td {
+					border: 2px solid black;
+				}
+				
+				#t01 {
+					width: 70%;    
+					background-color: #99CC66;
+				}
+				
+			</style>
+    </head>
+	
+	
+	<!--<div style="background-image: url('IMG-20200420-WA0000.jpg');"> -->
+	
+	<img src="IMG-20200420-WA0000.jpg" alt="Ortusolis Logo" class="center" width="200" height="100">
+	
+	</div>
+	
+    <body>
+
+        
+    	<script>
+                $(document).ready(function() {
+                    oConnectToWSServer();
+                });
+            </script>
+			
+			<h1 style="font-size:40px; color:white; class:center;">Erigate Device</h1>
+			
+<!--*********************************************************************************************************************
+*
+*     Name:                    Buttons
+*   
+*     Description:             Add the buttons Enter Activation Key for further actions
+*							   
+*
+**********************************************************************************************************************-->
+			
+
+            <div id="connectionStatus"></div>
+			
+			<p style="width:30%;height:30px; background-color:MediumSeaGreen; color:black">Enter Gateway Device ID</p>
+			<input type="text" id="DeviceID" name="Device ID">
+			<input type="submit" onclick="gateDeviceId();" value="Submit">
+			<br>
+            <br>
+
+            <button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="actuator106();">106</button>
+            <br>
+            <br>
+			    
+            <button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="Action501();">Get Client ID</button>
+            <br>
+            <br>
+			
+			<button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="action101();">action101</button>
+            <br>
+            <br>
+			
+			<button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="action103();">action103</button>
+            <br>
+            <br>
+			
+			<button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="action102();">action102</button>
+            <br>
+            <br>
+			
+			<button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="action104();">action104</button>
+            <br>
+            <br>
+			
+			<button type="button" value="devicedata" style="width:30%;height:30px;background-color: Khaki;color: black" onclick="action105();">action105</button>
+            <br>
+            <br>
+			
+	 <<!-- 		<table id="t01">
+  <tr>
+  <th>Action Description</th>
+    <th>Click the button here!!</th>
+  </tr>
+  <tr>
+    <td>Switch On for One time</td>
+    <td><button type="button" value="devicedata" style="background-color:FFFF99; height:25px; border-radius: 12px; color: black" onclick="manualMotorOn();">Manual On(Once)</button></td>
+	
+  </tr>
+  <tr>
+    <td>Switch On for Multiple Times</td>
+    <td><button type="button" value="devicedata" style="background-color: FFFF99; height:25px; border-radius: 12px; color: black" onclick="manualMotorMultipleOn();">Manual On(Multiple)</button></td>
+
+  </tr>
+  <tr>
+    <td>Switch Off </td>
+    <td><button type="button" value="devicedata" style="background-color: FFFF99; height:25px; border-radius: 12px; color: black" onclick="manualMotorOff();">Manual Off</button></td>
+
+  </tr>
+  
+  <tr>
+    <td>Set and send timesheet </td>
+    <td><button type="button" value="devicedata" style="background-color: FFFF99; height:25px; border-radius: 12px; color: black" onclick="sendTimeSheet();">Send timesheet</button></td>
+
+  </tr>
+</table>-->
+			<br> 
+			<button type="button" value="devicedata" style="width:30%;height:30px;background-color:Khaki; border-radius: 12px; color: red" onclick="generateAutoMail();">Generate Report Mail</button>
+            
+           
+    </body>
+</html>

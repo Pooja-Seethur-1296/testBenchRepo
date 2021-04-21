@@ -1,0 +1,13 @@
+/****Regular Test Bench Set Up****/
+
+Name: 		1.Regular Test Bench Server - Server with already defined automated test routines with mail and report generating modules
+      		2.Regular User Interface - HTML client to send messages to regular devices.
+
+Version:	1.1
+
+Revision Date:	1/27/2021
+
+Author:		Pooja Sethur
+
+Location: 	Iot repository
+

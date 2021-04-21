@@ -1,0 +1,326 @@
+<!--*********************************************************************************************************************
+*
+*     Name:                    Erigate Regular Client 
+*     Version:                 1.0
+*     Author:                  Pooja Seethur
+*     Description:             This is the HTML file (user interface) having code for a regular version. 
+*							   
+**********************************************************************************************************************-->
+<html>
+    <head>
+            <script type="text/javascript" src="regularClient.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<style>
+			
+				img {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+				}
+                h1 {
+					text-align: center;
+				}
+
+				.accordion {
+  					background-color: rgb(194, 199, 214);
+  					color: #444;
+  					cursor: pointer;
+  					padding: 8px;
+  					width: 100%;
+ 					border: none;
+  					text-align: left;
+ 			 		outline: none;
+  					font-size: 12px;
+  					transition: 0.4s;
+				}
+
+				.active, .accordion:hover {
+  					background-color: #ccc;
+				}
+
+				.panel {
+					padding: 0 18px;
+  					display: none;
+  					background-color: white;
+  					overflow: hidden;
+				}
+
+ 				/********************** Classification of contents in different tabs *******************/
+
+				* {box-sizing: border-box}
+
+				/* Set height of body and the document to 100% */
+				body, html {
+				height: 100%;
+				margin: 0;
+				font-family: Arial;
+				}
+
+				/* Style tab links */
+				.tablink {
+				background-color: lightgrey;
+				color: black;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 14px 16px;
+				font-size: 17px;
+				width: 50%;
+				}
+
+				.tablink:hover {
+				background-color: lightgrey;
+				}
+
+				/* Style the tab content (and add height:100% for full page content) */
+				.tabcontent {
+				color: black;
+				display: none;
+				padding: 100px 50px;
+				height: 100%;
+				}
+
+				#Tester_Information {background-color: whitesmoke;}
+				#Test_Routines {background-color: whitesmoke;}
+
+				
+			</style>
+    </head>
+	
+	
+	<!--<div style="background-image: url('IMG-20200420-WA0000.jpg');"> -->
+	
+	<img src="IMG-20200420-WA0000.jpg" alt="Ortusolis Logo" class="center" width="200" height="100">
+
+	
+    <body>
+
+<!--************ Connect to web socket server **********-->
+        
+    	<script>
+                $(document).ready(function() {
+                    oConnectToWSServer();
+                });
+            </script>
+			
+			<h1 style="font-size:30px; color:black; text-align:center;">Regular TestBench UI</h1>
+			
+<!--*********************************************************************************************************************
+*
+*   Description:  Buttons and text fields to enter data and to trigger actions. This action calls functions from 
+*				  appClients.js file and sends the JSON messages to the server.		   
+*
+*********************************************************************************************************************-->
+
+<button class="tablink" onclick="openPage('Tester_Information', this, 'whitesmoke')" id="defaultOpen">Tester Information</button>
+<button class="tablink" onclick="openPage('Test_Routines', this, 'whitesmoke')">Test Routines</button>
+
+<div id="Tester_Information" class="tabcontent"> 
+	<h3>Give or Obtain testing related information here</h3>
+	<!------------------------------- Initial details -------------------------->
+
+	<div id="connectionStatus"></div>
+			
+	<h4 style="color:black">Enter initial details here before performing test cycle!</h4>
+
+	<input type="text" id="DeviceID" placeholder="Enter device ID" name="Device ID">
+	<input type="text" id="nameOfTester" placeholder="Enter tester name" name="testerName">
+	<input type="text" id="hardwareVersion" placeholder="Enter hardware version" name="versionOfHardware">
+	<input type="submit" onclick="gateDeviceId();" value="Submit">
+	<br>
+	<br>
+	
+	<h4 style="color:black">Give details here to obtain testing related information from Database!</h4>
+	<select name="dataBaseParameter" id="dataBaseParam">
+		<option value="byTesterName">By Tester Name</option>
+		<option value="byDeviceId">By Device Id</option>
+		<option value="byDate">By Date</option>
+		<option value="byTestStatus">By Test Status</option>
+	  </select>
+	<input type="text" style="width:25%;height:20px" id="DbTesterParam" placeholder="Enter testerName/DeviceId/Date/TestStatus" name="DbtesterName">
+	<input type="text" style="width:20%;height:20px" id="DbTesterSecondParam" placeholder="Enter DeviceId" name="DbDeviceId">
+	<br>
+	<br>
+	<input type="submit" onclick="handleTestRelatedRequest();" value="Submit">
+	<br>
+	<br>
+	<button type="button" value="devicedata" style="width:15%;height:30px;background-color: rgb(168, 199, 105); border-radius: 12px;color: black" onclick="factoryReset();">Factory reset</button>
+  </div>
+			
+		
+  <div id="Test_Routines" class="tabcontent">		
+			<h3 style="color:black">Select/Click on Test routine</h3>
+
+			<!------------------------------- Add the sensor node routine -------------------------->
+			<button id = "addSensorNodes"class="accordion">> Add sensor nodes to gateway</button>
+			
+			<div class="panel">
+				<br>
+				<input type="text" id="sensorId1" placeholder="Enter sensor ID1" name="sensorId1">
+				<input type="text" id="sensorId2" placeholder="Enter sensor ID2" name="sensorId2">
+				<input type="text" id="sensorId3" placeholder="Enter sensor ID3" name="sensorId3">
+				<input type="text" id="sensorId4" placeholder="Enter sensor ID4" name="sensorId4">
+				<input type="text" id="sensorId5" placeholder="Enter sensor ID5" name="sensorId5">
+				<br><br>
+				<input type="submit" onclick="routineDefinition('addSensorNodes');" value="Submit">
+			</div>
+			<br><br>
+
+
+			<!------------------------------- Add the actuator node routine ------------------------->
+			<button id = "addActuatorNodes"class="accordion">> Add actuator nodes to gateway</button>
+			
+			<div class="panel">
+				<br>
+				<input type="text" id="actuatorId1" placeholder="Enter actuator ID1" name="actuatorId1">
+				<input type="text" id="actuatorId2" placeholder="Enter actuator ID2" name="actuatorId2">
+				<input type="text" id="actuatorId3" placeholder="Enter actuator ID3" name="actuatorId3">
+				<input type="text" id="actuatorId4" placeholder="Enter actuator ID4" name="actuatorId4">
+				<input type="text" id="actuatorId5" placeholder="Enter actuator ID5" name="actuatorId5">
+				<br><br>
+				<input type="submit" onclick="routineDefinition('addActuatorNodes');" value="Submit">
+			</div>
+			<br><br>
+
+			<!------------------------------- Delete sensor node routine -------------------------->
+			<button id = "deleteSensorNodes"class="accordion">> Delete all sensor nodes from gateway</button>
+			
+			<div class="panel">
+				<br>
+				<input type="text" id="sensorId3r1" placeholder="Enter sensor ID1" name="sensorId1">
+				<input type="text" id="sensorId3r2" placeholder="Enter sensor ID2" name="sensorId2">
+				<input type="text" id="sensorId3r3" placeholder="Enter sensor ID3" name="sensorId3">
+				<input type="text" id="sensorId3r4" placeholder="Enter sensor ID4" name="sensorId4">
+				<input type="text" id="sensorId3r5" placeholder="Enter sensor ID5" name="sensorId5">
+				<br><br>
+				<input type="submit" onclick="routineDefinition('deleteSensorNodes');" value="Submit">
+				<br>
+				<p>Or delete already added sensor nodes from previous routine</p>
+				<button type="button" value="devicedata" style="width:15%;height:25px;background-color: rgb(120, 152, 238); border-radius: 12px;color: black" onclick="routineDefinition('deleteExistingSensor');">Delete Existing</button>
+			</div>
+			<br><br>
+
+
+			<!------------------------------- Delete all actuator nodes routine ------------------------->
+			<button id = "deleteActuatorNodes"class="accordion">> Delete all actuator nodes from gateway</button>
+			
+			<div class="panel">
+				<br>
+				<input type="text" id="actuatorId4r1" placeholder="Enter actuator ID1" name="actuatorId1">
+				<input type="text" id="actuatorId4r2" placeholder="Enter actuator ID2" name="actuatorId2">
+				<input type="text" id="actuatorId4r3" placeholder="Enter actuator ID3" name="actuatorId3">
+				<input type="text" id="actuatorId4r4" placeholder="Enter actuator ID4" name="actuatorId4">
+				<input type="text" id="actuatorId4r5" placeholder="Enter actuator ID5" name="actuatorId5">
+				<br><br>
+				<input type="submit" onclick="routineDefinition('deleteActuatorNodes');" value="Submit">
+				<br>
+				<p>Or delete already added actuator nodes from previous routine</p>
+				<button type="button" value="devicedata" style="width:15%;height:25px;background-color: rgb(120, 152, 238); border-radius: 12px;color: black" onclick="routineDefinition('deleteExistingActuator');">Delete Existing</button>
+			</div>
+			<br><br>
+
+
+			<!------------------------------- Add & delete a node routine ----------------------->
+			<button id = "addDeleteNodes"class="accordion">> Add & delete an actuator node from gateway</button>
+			
+				<div class="panel">
+					<br>
+					<input type="text" id="actuatorId5r" placeholder="Enter actuator ID1" name="actuatorId5r">
+					<p>Enter no of times the addition & deletion needs to be done</p>
+					<input type="text" id="noOfIterAddDelete" placeholder="Enter Iteration No" name="noOfIterAddDelete">
+					<input type="submit" onclick="routineDefinition('addDeleteNodes');" value="Submit">
+					<br>
+				</div>
+
+			<br><br>
+
+
+			<!---------------------------- Add, pair & delete a node routine -------------------->
+			<button id = "addPairDeleteNodes"class="accordion">> Add, pair & delete node to gateway</button>
+			
+			<div class="panel">
+				<br>
+				<input type="text" id="sensorId6r" placeholder="Enter sensor ID" name="sensorId6r">
+				<input type="text" id="actuatorId6r" placeholder="Enter actuator ID" name="actuatorId6r">
+				<input type="submit" onclick="routineDefinition('addPairDeleteNodes');" value="Submit">
+				<br><br>
+			</div>
+			<br><br>
+
+
+			<!------------------------ regular test routine ------------------------------>
+			<button id = "regularRoutine"class="accordion">> Regular test routine</button>
+			
+			<div class="panel">
+				<br>
+				<input type="text" id="sensorId7r" placeholder="Enter sensor ID" name="sensorId7r">
+				<input type="text" id="actuatorId7r" placeholder="Enter actuator ID" name="actuatorId7r">
+				<input type="submit" onclick="routineDefinition('regularRoutine');" value="Submit">
+				<br><br>
+			</div>
+
+			<br>
+			<button type="button" class="center" value="devicedata" style="width:20%;height:30px;background-color: rgb(97, 96, 96); border-radius: 12px; color: white" onclick="normalRegularRoutine();">Normal Regular Routine</button>
+
+			<!--<h3 style="background-color:lightslategray; color:black">Select test routine</h3>
+			<select name="routine" id="routineType">
+			  <option value="addSensorNodes">Add all 5 sensor nodes</option>
+			  <option value="addActuatorNodes">Add all 5 actuator nodes</option>
+			  <option value="deleteSensorNodes">Delete all 5 sensor nodes</option>
+			  <option value="deleteActuatorNodes">Delete all 5 actuator nodes</option>
+			  <option value="addDeleteNodes">Add & Delete a node</option>
+			  <option value="addPairDeleteNodes">Add, Pair & delete the nodes</option>
+			  <option value="regularRoutine">Regular test routine</option> 
+			</select>
+			<br>
+			<br>
+			<input type="submit" onclick="routineDefinition();" value="select">-->
+				
+			<br>
+			<br>
+			<button type="button" class="center" value="devicedata" style="width:20%;height:30px;background-color: rgb(97, 96, 96); border-radius: 12px; color: white" onclick="generateAutoMail();">Generate Report Mail</button>
+			<br>
+			<br>
+	</div>
+            
+		 
+			<script>
+				var acc = document.getElementsByClassName("accordion");
+				var i;
+				
+				for (i = 0; i < acc.length; i++) {
+				  acc[i].addEventListener("click", function() {
+					this.classList.toggle("active");
+					var panel = this.nextElementSibling;
+					if (panel.style.display === "block") {
+					  panel.style.display = "none";
+					} else {
+					  panel.style.display = "block";
+					}
+				  });
+				}
+
+				function openPage(pageName,elmnt,color) {
+					var i, tabcontent, tablinks;
+					tabcontent = document.getElementsByClassName("tabcontent");
+					for (i = 0; i < tabcontent.length; i++) {
+						tabcontent[i].style.display = "none";
+					}
+					tablinks = document.getElementsByClassName("tablink");
+					for (i = 0; i < tablinks.length; i++) {
+						tablinks[i].style.backgroundColor = "";
+					}
+					document.getElementById(pageName).style.display = "block";
+					elmnt.style.backgroundColor = color;
+					}
+
+					// Get the element with id="defaultOpen" and click on it
+					document.getElementById("defaultOpen").click();
+			</script>
+		
+			
+           
+    </body>
+</html>
