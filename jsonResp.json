@@ -1,0 +1,154 @@
+{
+
+    "deviceIdentifier" :[
+                        { 
+                            "resp":"GET_ACTUATOR_LIST", "statusCode":200, "deviceId" : "OTSLITEGID001", "actuatorList" : [
+                                                                {"actuatorId" : "OTSAID001","actuatorName" : "kicthen","status" : "0"},
+                                                                {"actuatorId" : "OTSAID002","actuatorName" : "rose_garden","status" : "1"}
+                                                            ]
+                        },
+                        { 
+                            "resp":"GET_ACTUATOR_LIST", "statusCode":200, "deviceId" : "OTSLITEGID002", "actuatorList" : [
+                                                                {"actuatorId" : "OTSAID003","actuatorName" : "living_room","status" : "0"}
+                                                            ]
+                        },                                         
+                        {
+                            "resp":"GET_ACTUATOR_LIST", "statusCode":200, "deviceId" : "OTSLITEGID003", "actuatorList" : [
+                                                                {"actuatorId" : "OTSAID004","actuatorName" : "pumkin_garden","status" : "1"}
+                                                            ]
+                        },
+                        {
+                            "resp":"GET_ACTUATOR_LIST", "statusCode":200, "deviceId" : "OTSLITEGID004", "actuatorList" : [
+                                                                {"actuatorId" : "OTSAID005","actuatorName" : "banana_garden","status" : "1"},
+                                                                {"actuatorId" : "OTSAID006","actuatorName" : "strawberry_garden","status" : "1"}
+                                                            ]
+                        },
+                        {
+                            "resp":"GET_ACTUATOR_LIST", "statusCode":200, "deviceId" : "OTSLITEGID005", "actuatorList" : [
+                                                                {"actuatorId" : "OTSAID007","actuatorName" : "orange_garden","status" : "1"}
+                                                            ]
+                        },
+                        {
+                            "resp":"GET_ACTUATOR_LIST", "statusCode":200, "deviceId" : "OTSLITEGID006", "actuatorList" : [
+                                                                {"actuatorId" : "OTSAID008","actuatorName" : "apple_garden","status" : "0"},
+                                                                {"actuatorId" : "OTSAID009","actuatorName" : "carrot_garden","status" : "1"},
+                                                                {"actuatorId" : "OTSAID010","actuatorName" : "peach_garden","status" : "1"}
+                        ]
+                        }
+    ],
+
+    "userIdentifier" :[
+                        { 
+                            "resp":"GET_DEVICE_LIST", "statusCode":200, "userId" : "UserOTS001", "deviceList" : [
+                                                                {"deviceId" : "OTSLITEGID001","deviceName" : "ots1"},
+                                                                {"deviceId" : "OTSLITEGID002","deviceName" : "ots2"},
+                                                                {"deviceId" : "OTSLITEGID003","deviceName" : "ots3"}
+                                                            ]
+                        },
+                        { 
+                            "resp":"GET_DEVICE_LIST", "statusCode":200, "userId" : "UserOTS002", "deviceList" : [
+                                                                {"deviceId" : "OTSLITEGID004","deviceName" : "ots4"},
+                                                                {"deviceId" : "OTSLITEGID005","deviceName" : "ots5"}
+                        ]
+                        },                                         
+                        {
+                            "resp":"GET_DEVICE_LIST", "statusCode":200, "userId" : "UserOTS003", "deviceList" : [
+                                                                {"deviceId" : "OTSLITEGID006","deviceName" : "ots6"}
+                        ]
+                        }                                     
+        ],                     
+                        
+
+
+    "timeActuatorOne": [
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Monday",
+                    "timerSheet":[ "11300511", "16305511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Tuesday",
+                    "timerSheet":[ "12300511", "14102510", "16305511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Wednesday",
+                    "timerSheet":[ "17302510"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Thursady",
+                    "timerSheet":[ "10300510", "12102511", "13300201", "17301511", "21101511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Friday",
+                    "timerSheet":[ "12300511", "15100511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Saturday",
+                    "timerSheet":[ "12300511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001", "weekDay":"Sunday",
+                    "timerSheet":["16305511"]
+                }
+            ],
+
+"timeActuatorTwo" : [   
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Monday",
+                    "timerSheet":[ "17302510"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Tuesday",
+                    "timerSheet":["16305511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Wednesday",
+                    "timerSheet":[ "12300511", "14102510", "16305511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Thursady",
+                    "timerSheet":[ "11300511", "16305511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Friday",
+                    "timerSheet":[ "12300511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Saturday",
+                    "timerSheet":[ "10300510", "12102511", "13300201", "17301511", "21101511"]
+                },
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002", "weekDay":"Sunday",
+                    "timerSheet":[ "12300511", "15100511"]
+                }       
+            ],
+
+    "actOneTimeVerTwo" :
+                {
+                    "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID001",
+                    "timerSheet":{ 
+                        "SU" : ["17302510"],
+                        "MO" : [ "11300511", "16305511"],
+                        "TU" : [ "10300510", "12102511", "13300201", "17301511", "21101511"],
+                        "WE" : [ "17301511", "21101511"],
+                        "TH" : [],
+                        "FR" : ["12300511", "15100511"],
+                        "ST" : [ "10300510", "12102511", "13300201"]}
+                }
+
+    ,
+
+    "actTwoTimeVerTwo" :
+        {
+            "resp":"GET_TIMER_SHEET", "statusCode":"200", "actuatorId":"OTSAID002",
+            "timerSheet":{ 
+                "SU" : ["17302510"],
+                "MO" : ["10300510", "12102511", "13300201"],
+                "TU" : ["13300201"],
+                "WE" : ["12102511", "17301511", "21101511"],
+                "TH" : ["15100511"],
+                "FR" : ["10300510", "12102511", "13300201", "17301511", "21101511"],
+                "ST" : ["12300511", "15100511"]}
+        }
+
+    
+}           
